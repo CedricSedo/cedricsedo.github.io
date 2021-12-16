@@ -1,0 +1,34 @@
+// 樂透彩產生器
+
+import java.util.Arrays;
+
+public class CH04_綜合練習一 {
+
+	public static void main(String[] args) {
+		int[] intArray = new int[6];
+		int intRandCount = 0, intBackCount = 0, i;
+
+		for (i = 0; i < 6; i++) {
+			intRandCount++;
+			intArray[i] = (int) (Math.random() * 46) + 1;
+			intBackCount = i - 1;
+
+			while (i > 0 && intBackCount >= 0) {
+				if (intArray[i] == intArray[intBackCount]) {
+					i--;
+					break;
+				}
+				intBackCount--;
+			}
+		}
+		System.out.println("亂數總共生產了" + intRandCount + "次");
+
+		Arrays.sort(intArray);
+
+		System.out.println("\n本期樂透彩六號碼 : ");
+		for (int j : intArray)
+			System.out.print(j + "\t");
+
+	}
+
+}
